@@ -1,10 +1,25 @@
 import express from "express";
-import cors from "cors"
+import cors from "cors";
 
-const app = express()
+import userRoutes from "./routes/userRoutes.js";
 
-app.use(express.json())
+const app = express();
 
-app.use(cors())
+app.use(express.json());
 
-export default app
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+    ],
+    credentials: true,
+  })
+);
+
+app.get("/", (_, res) => {
+  res.send("Hello World");
+});
+
+app.use("/api/user", userRoutes);
+
+export default app;

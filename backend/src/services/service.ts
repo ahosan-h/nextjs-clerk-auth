@@ -1,10 +1,11 @@
-import User from "../models/user.model.js";
+import UserModel from "../models/User.js";
+
 
 export const syncUserService = async (
   clerkId: string,
   email: string
 ) => {
-  return User.findOneAndUpdate(
+  return UserModel.findOneAndUpdate(
     {
       clerkId,
     },
