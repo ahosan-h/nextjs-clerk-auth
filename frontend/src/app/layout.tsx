@@ -4,12 +4,14 @@ import {
   ClerkProvider,
 } from "@clerk/nextjs";
 
+import { Toaster } from "sonner";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Clerk Auth App",
+  title: "Clerk Auth",
   description:
-    "Next.js + Clerk + Express",
+    "Next.js + Express + MongoDB",
 };
 
 export default function RootLayout({
@@ -20,7 +22,25 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body>{children}</body>
+        <body>
+          {children}
+
+          <Toaster
+            position="top-right"
+            richColors
+            expand
+            closeButton
+            toastOptions={{
+              duration: 3000,
+
+              style: {
+                borderRadius: "12px",
+                padding: "14px 16px",
+                fontSize: "14px",
+              },
+            }}
+          />
+        </body>
       </html>
     </ClerkProvider>
   );

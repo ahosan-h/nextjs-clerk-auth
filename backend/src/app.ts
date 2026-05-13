@@ -11,14 +11,12 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
+      "http://192.168.0.100:3000",
     ],
+
     credentials: true,
   })
 );
-
-app.get("/", (_, res) => {
-  res.send("Hello World");
-});
 
 app.use("/api/user", userRoutes);
 
